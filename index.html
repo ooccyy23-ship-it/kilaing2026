@@ -278,5 +278,51 @@
         if (!isOther) transportOtherInput.value = '';
       });
     </script>
+
+    <!-- 年齡判斷：獨立運作，不依賴 app.js -->
+    <script>
+      (function () {
+        const birthdayEl = document.getElementById('regBirthday');
+        const downloadEl = document.getElementById('downloadAgreementWrapper');
+        const consentWrapEl = document.getElementById('parentConsentWrapper');
+        const consentInputEl = document.getElementById('parentConsentInput');
+        const consentMarkEl = document.getElementById('consentRequiredMark');
+        const ageStatusEl = document.getElementById('ageStatus');
+        const CAMP_DATE = new Date('2026-07-19T00:00:00');
+
+        function checkAge() {
+          const val = birthdayEl?.value;
+          if (!val) {
+            downloadEl.hidden = true;
+            consentWrapEl.hidden = true;
+            if (consentInputEl) { consentInputEl.required = false; consentInputEl.value = ''; }
+            if (consentMarkEl) consentMarkEl.style.display = 'none';
+            if (ageStatusEl) ageStatusEl.textContent = '';
+            return;
+          }
+          const birth = new Date(val + 'T00:00:00');
+          let age = CAMP_DATE.getFullYear() - birth.getFullYear();
+          const m = CAMP_DATE.getMonth() - birth.getMonth();
+          if (m < 0 || (m === 0 && CAMP_DATE.getDate() < birth.getDate())) age--;
+          const under18 = age < 18;
+
+          downloadEl.hidden = !under18;
+          consentWrapEl.hidden = !under18;
+          if (consentInputEl) consentInputEl.required = under18;
+          if (!under18 && consentInputEl) consentInputEl.value = '';
+          if (consentMarkEl) consentMarkEl.style.display = under18 ? 'inline' : 'none';
+          if (ageStatusEl) {
+            ageStatusEl.textContent = under18
+              ? `目前計算為 ${age} 歲，未滿 18 歲者需要上傳家長同意書。`
+              : `目前計算為 ${age} 歲，已滿 18 歲，可直接送出報名。`;
+            ageStatusEl.className = 'form-status ' + (under18 ? 'error' : 'success');
+          }
+        }
+
+        birthdayEl?.addEventListener('change', checkAge);
+        birthdayEl?.addEventListener('input', checkAge);
+        checkAge(); // 頁面載入時立即執行，預設隱藏
+      })();
+    </script>
   </body>
 </html>
