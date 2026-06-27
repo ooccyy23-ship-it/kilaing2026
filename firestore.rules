@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 報名資料集合
+    match /registrations/{docId} {
+
+      // 任何人可以新增（報名），但不能讀取他人資料
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'nameZh', 'gender', 'idNumber', 'birthdate',
+          'church', 'phone', 'email', 'address',
+          'parentName', 'parentPhone', 'shuttle',
+          'diet', 'tshirt', 'status', 'createdAt'
+        ])
+        && request.resource.data.status == 'pending'
+        && request.resource.data.nameZh is string
+        && request.resource.data.email is string;
+
+      // 只有登入的管理員可以讀取、更新、刪除
+      allow read, update, delete: if
+        request.auth != null
+        && request.auth.token.email_verified == true;
+    }
+  }
+}

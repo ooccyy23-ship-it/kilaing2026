@@ -1,328 +1,370 @@
-<!doctype html>
-<html lang="zh-Hant">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>2026第五屆青年領袖輔導培訓營 ── Kilaing tjai Yisu</title>
-    <meta
-      name="description"
-      content="2026第五屆青年領袖輔導培訓營 Kilaing tjai Yisu，活動日期 2026年7月19日至21日，地點台東知本踢踏民宿。"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到頂部">
-        <span class="brand-mark">Y</span>
-        <span>青年領袖營</span>
-      </a>
-      <nav aria-label="主要導覽">
-        <a href="#details">活動資訊</a>
-        <a href="#register">活動報名</a>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 第五屆青年領袖輔導培訓營</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- ===== 導覽列 ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-icon">⛺</span>
+        <span class="logo-text">青年領袖營 <em>2026</em></span>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">活動介紹</a>
+        <a href="#schedule">活動資訊</a>
+        <a href="#steps">報名流程</a>
+        <a href="#faq">FAQ</a>
+        <a href="./register.html" class="btn-nav">立即報名</a>
       </nav>
-    </header>
+      <button class="nav-toggle" id="navToggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-art" aria-hidden="true">
-          <div class="sun"></div>
-          <div class="dove">
-            <span class="wing left"></span>
-            <span class="body"></span>
-            <span class="wing right"></span>
-          </div>
-          <div class="wave wave-one"></div>
-          <div class="wave wave-two"></div>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="cloud c1">☁️</div>
+      <div class="cloud c2">☁️</div>
+      <div class="cloud c3">☁️</div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">第五屆 · 2026</div>
+      <h1 class="hero-title">
+        青年領袖<br />
+        <span class="accent">輔導培訓營</span>
+      </h1>
+      <p class="hero-sub">裝備自己，成為世代的光！<br />為期三天的特會，帶你在信仰中突破成長。</p>
+
+      <div class="countdown" id="countdown">
+        <div class="cd-item">
+          <span class="cd-num" id="cd-days">--</span>
+          <span class="cd-label">天</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-item">
+          <span class="cd-num" id="cd-hours">--</span>
+          <span class="cd-label">時</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-item">
+          <span class="cd-num" id="cd-mins">--</span>
+          <span class="cd-label">分</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-item">
+          <span class="cd-num" id="cd-secs">--</span>
+          <span class="cd-label">秒</span>
+        </div>
+      </div>
+      <p class="cd-caption">距離活動開始倒數中</p>
+
+      <div class="hero-cta">
+        <a href="./register.html" class="btn-primary">🎉 立即報名</a>
+        <a href="#about" class="btn-ghost">了解更多 ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="camp-card">
+        <div class="camp-card-header">🗓️ 活動日期</div>
+        <div class="camp-card-body">2026 年 7 月 24–26 日</div>
+      </div>
+      <div class="camp-card">
+        <div class="camp-card-header">📍 活動地點</div>
+        <div class="camp-card-body">敬請期待公告</div>
+      </div>
+      <div class="camp-card">
+        <div class="camp-card-header">👥 招收對象</div>
+        <div class="camp-card-body">國中生至大學生（12–22 歲）</div>
+      </div>
+      <div class="camp-card">
+        <div class="camp-card-header">📋 報名截止</div>
+        <div class="camp-card-body">2026 年 7 月 10 日</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 關於活動 ===== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-label">關於活動</div>
+      <h2 class="section-title">什麼是青年領袖輔導培訓營？</h2>
+      <p class="section-desc">
+        青年領袖輔導培訓營（Youth Leader Training Camp）是由教會青年事工舉辦的年度特會，<br class="br-desktop" />
+        專為渴望在信仰中成長、被裝備成為領袖的青少年所設計。
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🙏</div>
+          <h3>靈性裝備</h3>
+          <p>透過特會講道、小組分享，在信仰根基上得到建造與更新。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌟</div>
+          <h3>領袖訓練</h3>
+          <p>實際學習領袖特質、溝通與服事技巧，預備成為世代的影響力。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>團隊建造</h3>
+          <p>與來自各地的青年一起生活、禱告、挑戰，建立一生的友誼。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>創意活動</h3>
+          <p>敬拜、才藝展示、戶外闖關，在歡笑中留下美好的回憶。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 活動資訊 ===== -->
+  <section class="section schedule" id="schedule">
+    <div class="container">
+      <div class="section-label">活動資訊</div>
+      <h2 class="section-title">重要時程與費用</h2>
+
+      <div class="info-grid">
+        <div class="info-block">
+          <h3 class="info-block-title">📅 活動時程</h3>
+          <ul class="timeline">
+            <li>
+              <span class="tl-date">即日起</span>
+              <span class="tl-event">開放報名</span>
+            </li>
+            <li>
+              <span class="tl-date">7 月 10 日</span>
+              <span class="tl-event">報名截止</span>
+            </li>
+            <li>
+              <span class="tl-date">7 月 15 日</span>
+              <span class="tl-event">繳費與文件繳交截止</span>
+            </li>
+            <li>
+              <span class="tl-date">7 月 24 日</span>
+              <span class="tl-event tl-highlight">活動開始 🎉</span>
+            </li>
+            <li>
+              <span class="tl-date">7 月 26 日</span>
+              <span class="tl-event">活動結束</span>
+            </li>
+          </ul>
         </div>
 
-        <div class="hero-content">
-          <p class="eyebrow">Kilaing tjai Yisu</p>
-          <h1>2026第五屆青年領袖輔導培訓營</h1>
-          <p class="lead">
-            歡迎加入我們的青年領袖培訓，未滿 18 歲者需上傳家長同意書方可報名。
-          </p>
-          <div class="hero-actions">
-            <a href="#register" class="button primary">立即報名</a>
-            <a href="#details" class="button secondary">查看活動資訊</a>
+        <div class="info-block">
+          <h3 class="info-block-title">💰 費用說明</h3>
+          <div class="fee-table">
+            <div class="fee-row fee-header">
+              <span>類別</span>
+              <span>金額</span>
+            </div>
+            <div class="fee-row">
+              <span>一般報名</span>
+              <span class="fee-amount">NT$ 2,000</span>
+            </div>
+            <div class="fee-row">
+              <span>早鳥優惠（6 月底前）</span>
+              <span class="fee-amount accent-text">NT$ 1,600</span>
+            </div>
+            <div class="fee-row">
+              <span>同家庭第二人</span>
+              <span class="fee-amount">NT$ 1,800</span>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section id="details" class="details-band">
-        <div class="section-heading">
-          <p class="eyebrow">Camp Info</p>
-          <h2>活動資訊</h2>
-        </div>
-
-        <div class="info-grid">
-          <article>
-            <span>活動名稱</span>
-            <strong>2026第五屆青年領袖輔導培訓營</strong>
-            <p>2026年第五屆青年領袖輔導培訓營，Kilaing tjai Yisu，歡迎報名。</p>
-          </article>
-          <article>
-            <span>活動日期</span>
-            <strong>2026年7月19日至21日</strong>
-            <p>活動期間請保持聯絡，報到當日請準時抵達。</p>
-          </article>
-          <article>
-            <span>活動地點</span>
-            <strong>台東知本踢踏民宿</strong>
-            <p>台東縣卑南鄉知本路三段，詳細地址報名後通知。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="register" class="registration-section">
-        <div class="form-intro">
-          <p class="eyebrow">Registration</p>
-          <h2>活動報名</h2>
-          <p>
-            請填寫以下報名表。滿 18 歲者可直接送出，未滿 18 歲者需上傳家長同意書，未滿 18
-            歲者請先下載同意書。
-          </p>
+          <p class="fee-note">※ 費用包含三天兩夜住宿、餐費及所有活動材料</p>
         </div>
 
-        <form id="registrationForm" class="registration-form" enctype="multipart/form-data">
+        <div class="info-block">
+          <h3 class="info-block-title">📦 需自備物品</h3>
+          <ul class="checklist">
+            <li>換洗衣物（3套）</li>
+            <li>盥洗用品</li>
+            <li>聖經與筆記本</li>
+            <li>個人藥品（如需要）</li>
+            <li>輕便外套</li>
+            <li>運動鞋</li>
+          </ul>
+        </div>
 
-          <!-- 姓名 + 性別 -->
-          <div class="field two">
-            <label>
-              <span>姓名</span>
-              <input id="regName" name="name" autocomplete="name" required />
-            </label>
-            <label>
-              <span>性別</span>
-              <select name="gender" required>
-                <option value="">請選擇</option>
-                <option value="男">男</option>
-                <option value="女">女</option>
-                <option value="保留">保留</option>
-              </select>
-            </label>
+        <div class="info-block">
+          <h3 class="info-block-title">📋 注意事項</h3>
+          <ul class="checklist">
+            <li>未滿 18 歲需上傳家長同意書</li>
+            <li>禁止攜帶危險物品</li>
+            <li>活動期間請遵守營地規定</li>
+            <li>如需取消報名請提前 7 天通知</li>
+            <li>報名後將收到確認 Email</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 報名流程 ===== -->
+  <section class="section steps" id="steps">
+    <div class="container">
+      <div class="section-label">報名流程</div>
+      <h2 class="section-title">四步驟完成報名</h2>
+
+      <div class="steps-track">
+        <div class="steps-line"></div>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-num">1</span>
+            <div class="step-ring"></div>
           </div>
-
-          <!-- 報名營隊 -->
-          <fieldset class="field choice-field">
-            <legend>報名營隊</legend>
-            <label>
-              <input type="radio" name="campType" value="青年領袖營" required />
-              <span>青年領袖營</span>
-            </label>
-            <label>
-              <input type="radio" name="campType" value="暑期兒童營" required />
-              <span>暑期兒童營</span>
-            </label>
-          </fieldset>
-
-          <!-- 飲食需求 -->
-          <div class="field two">
-            <label>
-              <span>飲食需求</span>
-              <select name="diet" id="dietSelect" required>
-                <option value="">請選擇</option>
-                <option value="葷食">葷食</option>
-                <option value="素食">素食</option>
-                <option value="其他">其他</option>
-              </select>
-            </label>
-            <label id="dietOtherWrap" hidden>
-              <span>飲食說明（其他）</span>
-              <input id="dietOtherInput" name="dietOther" placeholder="請說明飲食需求" />
-            </label>
+          <div class="step-content">
+            <h3>填寫報名表</h3>
+            <p>線上填寫個人資料、緊急聯絡人及健康資訊。</p>
           </div>
+        </div>
 
-          <!-- 衣服尺寸 + 身分證字號 -->
-          <div class="field two">
-            <label>
-              <span>衣服尺寸</span>
-              <select name="shirtSize" required>
-                <option value="">請選擇</option>
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="2XL">2XL</option>
-                <option value="3XL">3XL</option>
-              </select>
-            </label>
-            <label>
-              <span>身分證字號</span>
-              <input
-                id="regNationalId"
-                name="nationalId"
-                autocomplete="off"
-                maxlength="10"
-                pattern="^[A-Z][12][0-9]{8}$"
-                placeholder="A123456789"
-                style="text-transform: uppercase"
-                required
-              />
-            </label>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-num">2</span>
+            <div class="step-ring"></div>
           </div>
-
-          <!-- 出生年月日 + 電話 -->
-          <div class="field two">
-            <label>
-              <span>出生年月日</span>
-              <input id="regBirthday" name="birthday" type="date" required />
-            </label>
-            <label>
-              <span>聯絡電話</span>
-              <input
-                id="regPhone"
-                name="phone"
-                type="tel"
-                autocomplete="tel"
-                inputmode="numeric"
-                pattern="^(09[0-9]{8}|0[2-8][0-9]{7,8})$"
-                placeholder="09XXXXXXXX 或 02XXXXXXXX"
-                required
-              />
-            </label>
+          <div class="step-content">
+            <h3>下載並簽署同意書</h3>
+            <p>未滿 18 歲學員需下載家長同意書，由家長簽名後上傳。</p>
           </div>
+        </div>
 
-          <!-- 下載家長同意書（未滿18歲才顯示） -->
-          <a id="downloadAgreementWrapper" class="download-card download-inline" href="./downloads/parental-consent-form.pdf" hidden download>
-            <span>家長同意書</span>
-            <strong>下載家長同意書</strong>
-            <small>未滿 18 歲者才會顯示，請先下載並完成簽署後上傳。</small>
-          </a>
-
-          <!-- 年齡提示訊息 -->
-          <p id="ageStatus" class="form-status" role="status" aria-live="polite"></p>
-
-          <!-- Email + 接送需求 -->
-          <div class="field two">
-            <label>
-              <span>電子信箱</span>
-              <input id="regEmail" name="email" type="email" autocomplete="email" required />
-            </label>
-            <label>
-              <span>接送需求</span>
-              <select name="transport" id="transportSelect" required>
-                <option value="">請選擇</option>
-                <option value="需接送">需接送</option>
-                <option value="自行前往">自行前往</option>
-                <option value="其他">其他</option>
-              </select>
-            </label>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-num">3</span>
+            <div class="step-ring"></div>
           </div>
-
-          <!-- 接送需求（其他）說明欄 -->
-          <label id="transportOtherWrap" class="field" hidden>
-            <span>接送說明（其他）</span>
-            <input id="transportOtherInput" name="transportOther" placeholder="請說明接送需求" />
-          </label>
-
-          <!-- 教會名稱 -->
-          <label class="field">
-            <span>教會名稱</span>
-            <input id="regChurch" name="church" required />
-          </label>
-
-          <!-- 住址 -->
-          <label class="field">
-            <span>住址</span>
-            <input id="regAddress" name="address" autocomplete="street-address" required />
-          </label>
-
-          <!-- 上傳家長同意書（未滿18歲才顯示） -->
-          <div id="parentConsentWrapper" class="upload-field" hidden>
-            <label for="parentConsentInput">
-              上傳家長同意書
-              <span id="consentRequiredMark" style="color: red; display: none;">*</span>
-            </label>
-            <input id="parentConsentInput" name="parentConsent" type="file" accept=".pdf,.jpg,.jpeg,.png" />
-            <small>接受 PDF、JPG、PNG，檔案大小不超過 20MB。</small>
+          <div class="step-content">
+            <h3>送出報名</h3>
+            <p>確認所有資料無誤後送出，系統將寄發確認信至您的信箱。</p>
           </div>
+        </div>
 
-          <!-- 隱私同意 -->
-          <label class="privacy-check">
-            <input type="checkbox" required />
-            <span>本人同意活動主辦單位蒐集、處理及利用上述個人資料，用於活動報名及聯絡相關事宜。</span>
-          </label>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-num">4</span>
+            <div class="step-ring"></div>
+          </div>
+          <div class="step-content">
+            <h3>完成繳費</h3>
+            <p>依確認信指示完成繳費，即完成所有報名手續！</p>
+          </div>
+        </div>
+      </div>
 
-          <button class="button primary submit-button" type="submit">送出報名</button>
-          <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-    </main>
+      <div class="steps-cta">
+        <a href="./register.html" class="btn-primary btn-large">開始填寫報名表 →</a>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <p>2026第五屆青年領袖輔導培訓營 ── Kilaing tjai Yisu</p>
-      <a class="admin-link" href="./admin.html" aria-label="前往管理後台">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path
-            d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"
-            fill="currentColor"
-          />
-        </svg>
-        <span>管理後台</span>
-      </a>
-    </footer>
+  <!-- ===== FAQ ===== -->
+  <section class="section faq" id="faq">
+    <div class="container faq-container">
+      <div class="section-label">常見問題</div>
+      <h2 class="section-title">FAQ</h2>
 
-    <script type="module" src="./app.js"></script>
+      <div class="faq-list" id="faqList">
 
-    <!-- 接送需求「其他」顯示/隱藏邏輯 -->
-    <script>
-      const transportSelect = document.getElementById('transportSelect');
-      const transportOtherWrap = document.getElementById('transportOtherWrap');
-      const transportOtherInput = document.getElementById('transportOtherInput');
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>報名後可以取消嗎？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>可以。請於活動開始前 7 天來信通知，我們將退還報名費（手續費除外）。7 天內恕不退費。</p>
+          </div>
+        </div>
 
-      transportSelect?.addEventListener('change', function () {
-        const isOther = this.value === '其他';
-        transportOtherWrap.hidden = !isOther;
-        transportOtherInput.required = isOther;
-        if (!isOther) transportOtherInput.value = '';
-      });
-    </script>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>需要是教會會友才能參加嗎？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>不需要！歡迎所有對信仰有興趣的青少年參加，無論是否為會友。</p>
+          </div>
+        </div>
 
-    <!-- 年齡判斷：獨立運作，不依賴 app.js -->
-    <script>
-      (function () {
-        const birthdayEl = document.getElementById('regBirthday');
-        const downloadEl = document.getElementById('downloadAgreementWrapper');
-        const consentWrapEl = document.getElementById('parentConsentWrapper');
-        const consentInputEl = document.getElementById('parentConsentInput');
-        const consentMarkEl = document.getElementById('consentRequiredMark');
-        const ageStatusEl = document.getElementById('ageStatus');
-        const CAMP_DATE = new Date('2026-07-19T00:00:00');
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>家長可以陪同嗎？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>本次活動為學員獨立參與的培訓營，家長不開放陪同入住，但可於指定時間接送。</p>
+          </div>
+        </div>
 
-        function checkAge() {
-          const val = birthdayEl?.value;
-          if (!val) {
-            downloadEl.hidden = true;
-            consentWrapEl.hidden = true;
-            if (consentInputEl) { consentInputEl.required = false; consentInputEl.value = ''; }
-            if (consentMarkEl) consentMarkEl.style.display = 'none';
-            if (ageStatusEl) ageStatusEl.textContent = '';
-            return;
-          }
-          const birth = new Date(val + 'T00:00:00');
-          let age = CAMP_DATE.getFullYear() - birth.getFullYear();
-          const m = CAMP_DATE.getMonth() - birth.getMonth();
-          if (m < 0 || (m === 0 && CAMP_DATE.getDate() < birth.getDate())) age--;
-          const under18 = age < 18;
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>家長同意書要怎麼上傳？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>在報名表中輸入出生年月日後，若系統判斷未滿 18 歲，將自動顯示下載與上傳同意書的區塊。下載後請列印、由家長簽名，再拍照或掃描後上傳 PDF 或圖片檔。</p>
+          </div>
+        </div>
 
-          downloadEl.hidden = !under18;
-          consentWrapEl.hidden = !under18;
-          if (consentInputEl) consentInputEl.required = under18;
-          if (!under18 && consentInputEl) consentInputEl.value = '';
-          if (consentMarkEl) consentMarkEl.style.display = under18 ? 'inline' : 'none';
-          if (ageStatusEl) {
-            ageStatusEl.textContent = under18
-              ? `目前計算為 ${age} 歲，未滿 18 歲者需要上傳家長同意書。`
-              : `目前計算為 ${age} 歲，已滿 18 歲，可直接送出報名。`;
-            ageStatusEl.className = 'form-status ' + (under18 ? 'error' : 'success');
-          }
-        }
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>報名費包含哪些項目？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>報名費包含三天兩夜住宿費、所有餐費（6 餐）、活動講義及材料費、T-shirt 一件。</p>
+          </div>
+        </div>
 
-        birthdayEl?.addEventListener('change', checkAge);
-        birthdayEl?.addEventListener('input', checkAge);
-        checkAge(); // 頁面載入時立即執行，預設隱藏
-      })();
-    </script>
-  </body>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>有其他問題怎麼聯絡？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>請透過 Email 聯絡我們：<a href="mailto:youthcamp@example.com">youthcamp@example.com</a>，或加入官方 LINE 群組，工作人員將盡快回覆。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 頁尾 ===== -->
+  <footer class="footer">
+    <div class="footer-wave"></div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⛺</span>
+        <p class="footer-title">2026 第五屆青年領袖輔導培訓營</p>
+        <p class="footer-sub">Youth Leader Training Camp</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">活動介紹</a>
+        <a href="#schedule">活動資訊</a>
+        <a href="#steps">報名流程</a>
+        <a href="#faq">FAQ</a>
+        <a href="./register.html">立即報名</a>
+      </div>
+      <p class="footer-copy">© 2026 青年事工團隊 · All rights reserved</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
 </html>

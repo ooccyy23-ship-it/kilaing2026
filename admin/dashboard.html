@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>報名管理 — 2026 青年領袖營</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="./admin.css" />
+</head>
+<body class="admin-dash-page">
+
+  <!-- ===== 側欄 ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span>⛺</span>
+      <div>
+        <p class="sidebar-title">青年領袖營</p>
+        <p class="sidebar-sub">2026 管理後台</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active">📋 報名列表</a>
+      <a href="../index.html" class="sidebar-link" target="_blank">🌐 前往活動網站</a>
+    </nav>
+    <button class="btn-logout" id="logoutBtn">⏏ 登出</button>
+  </aside>
+
+  <!-- 手機側欄遮罩 -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===== 主內容 ===== -->
+  <div class="dash-body">
+
+    <!-- 頂部列 -->
+    <header class="dash-header">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="選單">☰</button>
+      <h2 class="dash-title">報名列表</h2>
+      <div class="dash-header-right">
+        <span class="admin-badge" id="adminEmail"></span>
+      </div>
+    </header>
+
+    <!-- 統計卡片 -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card">
+        <div class="stat-num" id="statTotal">—</div>
+        <div class="stat-label">總報名人數</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statPending">—</div>
+        <div class="stat-label">待確認</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statConfirmed">—</div>
+        <div class="stat-label">已確認</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statMinor">—</div>
+        <div class="stat-label">未滿 18 歲</div>
+      </div>
+    </div>
+
+    <!-- 工具列：搜尋 + 篩選 + 匯出 -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="searchInput" placeholder="搜尋姓名、Email、教會…" />
+        </div>
+        <div class="select-wrap filter-select">
+          <select id="statusFilter">
+            <option value="">全部狀態</option>
+            <option value="pending">待確認</option>
+            <option value="confirmed">已確認</option>
+            <option value="cancelled">已取消</option>
+          </select>
+        </div>
+        <div class="select-wrap filter-select">
+          <select id="minorFilter">
+            <option value="">全部年齡</option>
+            <option value="true">未滿 18 歲</option>
+            <option value="false">已成年</option>
+          </select>
+        </div>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn-refresh" id="refreshBtn" title="重新載入">🔄</button>
+        <button class="btn-export" id="exportBtn">⬇ 匯出 Excel</button>
+      </div>
+    </div>
+
+    <!-- 表格 -->
+    <div class="table-wrap">
+      <div class="table-loading" id="tableLoading">
+        <div class="spinner"></div>
+        <p>載入資料中…</p>
+      </div>
+      <div class="table-empty" id="tableEmpty" hidden>
+        <p>😴 找不到符合條件的報名資料</p>
+      </div>
+      <table class="reg-table" id="regTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>姓名</th>
+            <th>性別</th>
+            <th>出生日期</th>
+            <th>教會</th>
+            <th>Email</th>
+            <th>手機</th>
+            <th>T-shirt</th>
+            <th>飲食</th>
+            <th>狀態</th>
+            <th>同意書</th>
+            <th>報名時間</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="regTableBody"></tbody>
+      </table>
+    </div>
+
+    <p class="table-count" id="tableCount"></p>
+
+  </div><!-- /dash-body -->
+
+  <!-- ===== 詳細資料 Modal ===== -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">報名詳細資料</h3>
+        <button class="modal-close" id="modalClose">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <div class="status-actions" id="statusActions"></div>
+        <button class="btn-modal-close" id="modalClose2">關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./admin-dash.js"></script>
+</body>
+</html>

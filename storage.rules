@@ -1,0 +1,19 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // 家長同意書上傳區
+    match /consent-forms/{fileName} {
+
+      // 任何人可以上傳（報名時），但限制檔案類型與大小
+      allow write: if
+        request.resource.size <= 5 * 1024 * 1024          // 最大 5MB
+        && request.resource.contentType.matches('image/.*|application/pdf');
+
+      // 只有登入的管理員可以讀取
+      allow read: if
+        request.auth != null
+        && request.auth.token.email_verified == true;
+    }
+  }
+}

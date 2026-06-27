@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>立即報名 — 2026 第五屆青年領袖輔導培訓營</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/register.css" />
+</head>
+<body class="register-page">
+
+  <!-- ===== 導覽列 ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo">
+        <span class="logo-icon">⛺</span>
+        <span class="logo-text">青年領袖營 <em>2026</em></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="./index.html#about">活動介紹</a>
+        <a href="./index.html#schedule">活動資訊</a>
+        <a href="./index.html#steps">報名流程</a>
+        <a href="./index.html#faq">FAQ</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== 頁首 ===== -->
+  <div class="reg-hero">
+    <div class="reg-hero-inner">
+      <a href="./index.html" class="back-link">← 返回首頁</a>
+      <h1>立即報名</h1>
+      <p>2026 第五屆青年領袖輔導培訓營 · 7 月 24–26 日</p>
+    </div>
+    <div class="reg-hero-wave"></div>
+  </div>
+
+  <!-- ===== 主體 ===== -->
+  <main class="reg-main">
+    <div class="reg-layout">
+
+      <!-- 進度條 -->
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-step active" data-step="1">
+          <div class="ps-circle">1</div>
+          <span>基本資料</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="2">
+          <div class="ps-circle">2</div>
+          <span>聯絡資料</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="3">
+          <div class="ps-circle">3</div>
+          <span>其他資訊</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="4">
+          <div class="ps-circle">4</div>
+          <span>確認送出</span>
+        </div>
+      </div>
+
+      <!-- 表單卡片 -->
+      <form class="reg-form" id="regForm" novalidate>
+
+        <!-- ===== STEP 1：基本資料 ===== -->
+        <div class="form-step active" id="step1">
+          <div class="step-header">
+            <div class="step-tag">步驟 1 / 4</div>
+            <h2>基本資料</h2>
+            <p>請填寫學員個人資訊</p>
+          </div>
+
+          <div class="field-group">
+            <div class="field">
+              <label for="nameZh">姓名（中文）<span class="req">*</span></label>
+              <input type="text" id="nameZh" name="nameZh" placeholder="請輸入中文全名" autocomplete="name" />
+              <span class="field-err" id="err-nameZh"></span>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="gender">性別<span class="req">*</span></label>
+                <div class="select-wrap">
+                  <select id="gender" name="gender">
+                    <option value="">請選擇</option>
+                    <option value="male">男</option>
+                    <option value="female">女</option>
+                    <option value="other">其他</option>
+                    <option value="undisclosed">不公開</option>
+                  </select>
+                </div>
+                <span class="field-err" id="err-gender"></span>
+              </div>
+
+              <div class="field">
+                <label for="idNumber">身分證字號<span class="req">*</span></label>
+                <input type="text" id="idNumber" name="idNumber" placeholder="A123456789" maxlength="10"
+                       autocomplete="off" style="text-transform:uppercase" />
+                <span class="field-hint">用於保險及緊急聯絡使用，不對外公開</span>
+                <span class="field-err" id="err-idNumber"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="birthdate">出生年月日<span class="req">*</span></label>
+              <input type="date" id="birthdate" name="birthdate"
+                     min="2004-01-01" max="2014-12-31" />
+              <span class="field-hint" id="ageHint"></span>
+              <span class="field-err" id="err-birthdate"></span>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="school">學校</label>
+                <input type="text" id="school" name="school" placeholder="就讀學校名稱" />
+              </div>
+              <div class="field">
+                <label for="grade">年級</label>
+                <input type="text" id="grade" name="grade" placeholder="例：國二、高一、大三" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="church">教會 / 所屬單位<span class="req">*</span></label>
+              <input type="text" id="church" name="church" placeholder="請輸入教會或團契名稱" />
+              <span class="field-err" id="err-church"></span>
+            </div>
+          </div>
+
+          <!-- 家長同意書區塊（動態顯示） -->
+          <div class="consent-block" id="consentBlock" hidden>
+            <div class="consent-header">
+              <span class="consent-icon">📋</span>
+              <div>
+                <h3>需要家長同意書</h3>
+                <p>依照您填寫的出生年月日，活動當天您未滿 18 歲，<br />需下載並上傳家長同意書才能完成報名。</p>
+              </div>
+            </div>
+            <div class="consent-actions">
+              <a href="./downloads/parent-consent.pdf" class="btn-consent-dl" download id="consentDownload">
+                ⬇️ 下載家長同意書（PDF）
+              </a>
+              <div class="field consent-upload-field">
+                <label for="consentFile">上傳已簽署同意書<span class="req">*</span></label>
+                <div class="upload-area" id="uploadArea">
+                  <input type="file" id="consentFile" name="consentFile"
+                         accept=".pdf,.jpg,.jpeg,.png" class="upload-input" />
+                  <div class="upload-ui" id="uploadUi">
+                    <span class="upload-icon">📎</span>
+                    <p>點擊或拖曳檔案至此</p>
+                    <span class="upload-hint">支援 PDF、JPG、PNG，最大 5MB</span>
+                  </div>
+                  <div class="upload-preview" id="uploadPreview" hidden>
+                    <span class="preview-icon">✅</span>
+                    <span class="preview-name" id="previewName"></span>
+                    <button type="button" class="preview-remove" id="removeFile">✕</button>
+                  </div>
+                </div>
+                <span class="field-err" id="err-consentFile"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-footer">
+            <span></span>
+            <button type="button" class="btn-next" id="next1">下一步 →</button>
+          </div>
+        </div>
+
+        <!-- ===== STEP 2：聯絡資料 ===== -->
+        <div class="form-step" id="step2">
+          <div class="step-header">
+            <div class="step-tag">步驟 2 / 4</div>
+            <h2>聯絡資料</h2>
+            <p>請填寫聯絡方式與地址</p>
+          </div>
+
+          <div class="field-group">
+            <div class="field-row">
+              <div class="field">
+                <label for="phone">本人手機<span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="09XX-XXX-XXX"
+                       autocomplete="tel" inputmode="tel" />
+                <span class="field-err" id="err-phone"></span>
+              </div>
+              <div class="field">
+                <label for="email">本人 Email<span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="example@email.com"
+                       autocomplete="email" inputmode="email" />
+                <span class="field-err" id="err-email"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="address">通訊地址<span class="req">*</span></label>
+              <input type="text" id="address" name="address" placeholder="請輸入完整地址"
+                     autocomplete="street-address" />
+              <span class="field-err" id="err-address"></span>
+            </div>
+
+            <div class="field">
+              <label for="parentName">家長姓名<span class="req">*</span></label>
+              <input type="text" id="parentName" name="parentName" placeholder="請輸入家長姓名" />
+              <span class="field-err" id="err-parentName"></span>
+            </div>
+
+            <div class="field">
+              <label for="parentPhone">家長電話<span class="req">*</span></label>
+              <input type="tel" id="parentPhone" name="parentPhone" placeholder="09XX-XXX-XXX 或市話"
+                     autocomplete="off" inputmode="tel" />
+              <span class="field-err" id="err-parentPhone"></span>
+            </div>
+
+            <fieldset class="field-fieldset">
+              <legend>接送需求</legend>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="shuttle" value="none" checked />
+                  <span class="radio-box"></span>
+                  自行前往與返回
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="shuttle" value="arrival" />
+                  <span class="radio-box"></span>
+                  需要去程接送
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="shuttle" value="departure" />
+                  <span class="radio-box"></span>
+                  需要回程接送
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="shuttle" value="both" />
+                  <span class="radio-box"></span>
+                  去程與回程皆需接送
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="step-footer">
+            <button type="button" class="btn-back" id="back2">← 上一步</button>
+            <button type="button" class="btn-next" id="next2">下一步 →</button>
+          </div>
+        </div>
+
+        <!-- ===== STEP 3：其他資訊 ===== -->
+        <div class="form-step" id="step3">
+          <div class="step-header">
+            <div class="step-tag">步驟 3 / 4</div>
+            <h2>其他資訊</h2>
+            <p>幫助我們為您做更好的安排</p>
+          </div>
+
+          <div class="field-group">
+            <fieldset class="field-fieldset">
+              <legend>飲食需求</legend>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="diet" value="normal" checked />
+                  <span class="radio-box"></span>
+                  一般（無特殊需求）
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="diet" value="vegetarian" />
+                  <span class="radio-box"></span>
+                  素食
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="diet" value="vegan" />
+                  <span class="radio-box"></span>
+                  全素 / 純植物性
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="diet" value="other" />
+                  <span class="radio-box"></span>
+                  其他（請在備註填寫）
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="tshirt">T-shirt 尺寸<span class="req">*</span></label>
+              <div class="select-wrap">
+                <select id="tshirt" name="tshirt">
+                  <option value="">請選擇</option>
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="2XL">2XL</option>
+                  <option value="3XL">3XL</option>
+                </select>
+              </div>
+              <span class="field-err" id="err-tshirt"></span>
+            </div>
+
+            <div class="field">
+              <label for="health">過敏 / 健康狀況</label>
+              <textarea id="health" name="health" rows="3"
+                placeholder="請填寫任何過敏原、疾病史、需特別注意的健康狀況，無則免填"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="notes">備註 / 其他</label>
+              <textarea id="notes" name="notes" rows="3"
+                placeholder="有任何其他需要告知工作人員的事項，請填寫於此"></textarea>
+            </div>
+          </div>
+
+          <div class="step-footer">
+            <button type="button" class="btn-back" id="back3">← 上一步</button>
+            <button type="button" class="btn-next" id="next3">下一步 →</button>
+          </div>
+        </div>
+
+        <!-- ===== STEP 4：確認送出 ===== -->
+        <div class="form-step" id="step4">
+          <div class="step-header">
+            <div class="step-tag">步驟 4 / 4</div>
+            <h2>確認報名資料</h2>
+            <p>請仔細核對以下資訊，確認無誤後送出</p>
+          </div>
+
+          <!-- 摘要區 -->
+          <div class="summary" id="summary">
+            <div class="summary-section">
+              <h3>基本資料</h3>
+              <div class="summary-grid" id="sum-basic"></div>
+            </div>
+            <div class="summary-section">
+              <h3>聯絡資料</h3>
+              <div class="summary-grid" id="sum-contact"></div>
+            </div>
+            <div class="summary-section">
+              <h3>其他資訊</h3>
+              <div class="summary-grid" id="sum-other"></div>
+            </div>
+            <div class="summary-section" id="sum-consent-section" hidden>
+              <h3>家長同意書</h3>
+              <div class="summary-grid" id="sum-consent"></div>
+            </div>
+          </div>
+
+          <!-- 隱私同意 -->
+          <div class="agree-block">
+            <label class="checkbox-label">
+              <input type="checkbox" id="agreePrivacy" name="agreePrivacy" />
+              <span class="checkbox-box"></span>
+              <span>我已閱讀並同意
+                <a href="#" class="link">個人資料使用聲明</a>，
+                本人所填資料將用於活動報名及相關聯繫用途。</span>
+            </label>
+            <span class="field-err" id="err-agreePrivacy"></span>
+          </div>
+
+          <div class="step-footer">
+            <button type="button" class="btn-back" id="back4">← 修改資料</button>
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span class="submit-text">確認送出報名 🎉</span>
+              <span class="submit-loading" hidden>送出中…</span>
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- ===== 送出成功 ===== -->
+      <div class="success-card" id="successCard" hidden>
+        <div class="success-icon">🎉</div>
+        <h2>報名成功！</h2>
+        <p>感謝您的報名，確認信已寄送至您的 Email。<br />
+           工作人員將在 3 個工作天內與您聯絡。</p>
+        <div class="success-info" id="successInfo"></div>
+        <a href="./index.html" class="btn-primary">返回首頁</a>
+      </div>
+
+    </div><!-- /reg-layout -->
+  </main>
+
+  <footer class="footer reg-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">© 2026 青年事工團隊 · All rights reserved</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/register.js"></script>
+</body>
+</html>
