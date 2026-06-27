@@ -3,22 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>2026第五屆青年領袖營報名</title>
+    <title>2026第五屆青年領袖營｜Kilaing tjai Yisu－作和平的使者</title>
     <meta
       name="description"
-      content="2026第五屆暑期青年領袖營 Kilaing tjai Yisu - 作和平的使者報名網站"
+      content="2026第五屆暑期青年領袖營 Kilaing tjai Yisu－作和平的使者，活動日期為115年7月12日至7月14日，地點在臺東知本踢踏民宿。"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到首頁">
+      <a class="brand" href="#top" aria-label="返回首頁">
         <span class="brand-mark">Y</span>
         <span>青年領袖營</span>
       </a>
       <nav aria-label="主要導覽">
         <a href="#details">活動資訊</a>
-        <a href="#register">線上報名</a>
+        <a href="#register">立即報名</a>
       </nav>
     </header>
 
@@ -38,7 +38,9 @@
         <div class="hero-content">
           <p class="eyebrow">Kilaing tjai Yisu</p>
           <h1>2026第五屆暑期青年領袖營</h1>
-          <p class="lead">在衝突與分裂的世代，學習成為和平的使者，讓信仰不只是知道，而是真實活出來。</p>
+          <p class="lead">
+            作和平的使者。歡迎青年與家長完成線上報名，未滿 18 歲者需上傳家長同意書。
+          </p>
           <div class="hero-actions">
             <a href="#register" class="button primary">立即報名</a>
             <a href="#details" class="button secondary">查看活動資訊</a>
@@ -56,17 +58,17 @@
           <article>
             <span>活動名稱</span>
             <strong>2026第五屆青年領袖營</strong>
-            <p>培訓15歲以上青年成為能夠服事、陪伴與帶領他人的營隊同工。</p>
+            <p>2026年第五屆暑期青年領袖營 Kilaing tjai Yisu－作和平的使者。</p>
           </article>
           <article>
             <span>活動日期</span>
-            <strong>115年7月12日(星期日)至115年7月14日(星期二)</strong>
-            <p>聖經查考、團體互動、信仰反思、禱告操練</p>
+            <strong>115年7月12日到7月14日</strong>
+            <p>活動為三天兩夜，請依報名表內容準備個人資料與所需文件。</p>
           </article>
           <article>
             <span>活動地點</span>
             <strong>臺東知本踢踏民宿</strong>
-            <p>臺東縣臺東市知本路二段292巷139號</p>
+            <p>臺東縣臺東市知本路二段292巷139號。</p>
           </article>
         </div>
       </section>
@@ -76,19 +78,9 @@
           <p class="eyebrow">Registration</p>
           <h2>線上報名</h2>
           <p>
-            年滿 18 歲可直接報名。未滿 18 歲者，請先下載並上傳家長同意書。
+            生日輸入後會自動判斷是否未滿 18 歲。未滿 18 歲者會顯示家長同意書下載與上傳區；已滿 18
+            歲者可直接送出。
           </p>
-
-          <a
-            id="downloadAgreementWrapper"
-            class="download-card"
-            href="./downloads/parental-consent-form.pdf"
-            download
-          >
-            <span>下載</span>
-            <strong>家長同意書</strong>
-            <small>未滿 18 歲時需要</small>
-          </a>
         </div>
 
         <form id="registrationForm" class="registration-form" enctype="multipart/form-data">
@@ -108,6 +100,18 @@
             </label>
           </div>
 
+          <fieldset class="field choice-field">
+            <legend>報名項目</legend>
+            <label>
+              <input type="radio" name="campType" value="青年領袖營" required />
+              <span>青年領袖營</span>
+            </label>
+            <label>
+              <input type="radio" name="campType" value="暑期兒童營" required />
+              <span>暑期兒童營</span>
+            </label>
+          </fieldset>
+
           <div class="field two">
             <label>
               <span>飲食</span>
@@ -120,11 +124,7 @@
             </label>
             <label id="dietOtherWrap" hidden>
               <span>飲食說明</span>
-              <input
-                id="dietOtherInput"
-                name="dietOther"
-                placeholder="請說明其他飲食需求"
-              />
+              <input id="dietOtherInput" name="dietOther" placeholder="請說明特殊飲食需求" />
             </label>
           </div>
 
@@ -179,6 +179,17 @@
 
           <p id="ageStatus" class="form-status" role="status" aria-live="polite"></p>
 
+          <a
+            id="downloadAgreementWrapper"
+            class="download-card download-inline"
+            href="./downloads/parental-consent-form.pdf"
+            download
+          >
+            <span>家長同意書</span>
+            <strong>下載家長同意書</strong>
+            <small>未滿 18 歲者才會顯示，請先下載並完成簽署。</small>
+          </a>
+
           <div class="field two">
             <label>
               <span>Email</span>
@@ -200,22 +211,22 @@
           </label>
 
           <label class="field">
-            <span>住家地址</span>
+            <span>地址</span>
             <input id="regAddress" name="address" autocomplete="street-address" required />
           </label>
 
           <div id="parentConsentWrapper" class="upload-field" hidden>
             <label for="parentConsentInput">
-              上傳已簽署家長同意書
+              家長同意書上傳
               <span id="consentRequiredMark" style="color: red; display: none;">*</span>
             </label>
             <input id="parentConsentInput" name="parentConsent" type="file" accept=".pdf,.jpg,.jpeg,.png" />
-            <small>支援 PDF、JPG、PNG，單檔上限 20MB。</small>
+            <small>支援 PDF、JPG、PNG，檔案大小請勿超過 20MB。</small>
           </div>
 
           <label class="privacy-check">
             <input type="checkbox" required />
-            <span>我同意主辦單位為本活動報名、保險、聯繫與行政作業使用上述個人資料。</span>
+            <span>本人同意活動資料蒐集、處理與使用，並確認填寫資料正確無誤。</span>
           </label>
 
           <button class="button primary submit-button" type="submit">送出報名</button>
@@ -225,8 +236,8 @@
     </main>
 
     <footer>
-      <p>2026第五屆青年領袖營 - 作和平的使者</p>
-      <a class="admin-link" href="./admin.html" aria-label="管理平台登入">
+      <p>2026第五屆青年領袖營｜作和平的使者</p>
+      <a class="admin-link" href="./admin.html" aria-label="前往管理平台">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path
             d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"

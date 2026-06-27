@@ -6,12 +6,14 @@ import {
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getFirestore,
   runTransaction,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 import {
+  deleteObject,
   getStorage,
   ref,
   uploadBytes
@@ -57,48 +59,54 @@ form?.addEventListener("submit", async (event) => {
   const submitButton = form.querySelector("button[type='submit']");
   const formData = new FormData(form);
   const ageState = updateAgeState();
-  const diet = String(formData.get("diet") || "");
+  const campType = clean(formData.get("campType"));
+  const diet = clean(formData.get("diet"));
   const dietOther = clean(formData.get("dietOther"));
-  const email = cleanUpper(formData.get("email"));
+  const email = clean(formData.get("email"));
   const nationalId = cleanUpper(formData.get("nationalId"));
   const phone = clean(formData.get("phone"));
   const consentFile = formData.get("parentConsent");
   const registrationId = createRegistrationId();
+  let nationalIdKey = "";
+  let consentStoragePath = null;
 
   setStatus("正在送出報名資料...", "");
   submitLock = true;
-  submitButton.disabled = true;
+  if (submitButton) submitButton.disabled = true;
 
   try {
+    if (!campType) {
+      throw new Error("請先選擇報名項目。");
+    }
+
     if (!validateNationalIdFormat(nationalId)) {
-      throw new Error("身分證字號格式錯誤，需為 1 個英文字母 + 1 碼 1/2 + 8 碼數字，例如 A123456789。");
+      throw new Error("身分證字號格式不正確，請輸入 1 個英文字母 + 9 個數字，例如 A123456789。");
     }
 
     if (!validateNationalIdChecksum(nationalId)) {
-      throw new Error("身分證字號檢查碼不正確，請再確認輸入內容。");
+      throw new Error("身分證字號檢查碼不正確，請確認是否輸入錯誤。");
     }
 
     if (!validatePhone(phone)) {
-      throw new Error("電話格式錯誤，台灣手機需為 09XXXXXXXX。");
+      throw new Error("電話格式不正確，台灣手機請輸入 09XXXXXXXX。");
     }
 
     if (diet === "其他" && !dietOther) {
-      throw new Error("你選了「其他飲食」，請補充說明。");
+      throw new Error("請在「飲食說明」欄位補充其他飲食需求。");
     }
 
-    const nationalIdKey = await hashValue(nationalId);
+    nationalIdKey = await hashValue(nationalId);
     await reserveNationalId(nationalIdKey, nationalId);
 
-    let consentStoragePath = null;
     let consentOriginalName = null;
 
     if (ageState.isUnder18) {
       if (!consentFile || !consentFile.size) {
-        throw new Error("未滿 18 歲者需要上傳已簽署的家長同意書。");
+        throw new Error("未滿 18 歲者必須上傳家長同意書。");
       }
 
       if (consentFile.size > 20 * 1024 * 1024) {
-        throw new Error("家長同意書檔案不可超過 20MB。");
+        throw new Error("家長同意書檔案過大，請控制在 20MB 以內。");
       }
 
       consentOriginalName = sanitizeFilename(consentFile.name);
@@ -111,6 +119,7 @@ form?.addEventListener("submit", async (event) => {
 
     await addDoc(collection(db, "registrations"), {
       registrationId,
+      campType,
       name: clean(formData.get("name")),
       gender: clean(formData.get("gender")),
       diet,
@@ -132,8 +141,9 @@ form?.addEventListener("submit", async (event) => {
     form.reset();
     updateAgeState();
     updateDietState();
-    setStatus("報名完成！我們已收到您的資料。", "success");
+    setStatus("報名成功，感謝你的提交！", "success");
   } catch (error) {
+    await rollbackPartialWrite(nationalIdKey, consentStoragePath);
     if (error?.code === "duplicate-registration") {
       setStatus(error.message, "error");
     } else {
@@ -141,7 +151,7 @@ form?.addEventListener("submit", async (event) => {
     }
   } finally {
     submitLock = false;
-    submitButton.disabled = false;
+    if (submitButton) submitButton.disabled = false;
   }
 });
 
@@ -168,8 +178,8 @@ function updateAgeState() {
 
   if (ageStatusEl) {
     ageStatusEl.textContent = isUnder18
-      ? "依活動日期計算，您報名時將未滿 18 歲，需要上傳家長同意書。"
-      : "依活動日期計算，您報名時已滿 18 歲，不需要上傳家長同意書。";
+      ? `目前計算為 ${age} 歲，未滿 18 歲者需要上傳家長同意書。`
+      : `目前計算為 ${age} 歲，已滿 18 歲，可直接送出報名。`;
     ageStatusEl.className = `form-status ${isUnder18 ? "error" : "success"}`;
   }
 
@@ -255,7 +265,7 @@ async function reserveNationalId(nationalIdKey, nationalId) {
   return runTransaction(db, async (transaction) => {
     const snapshot = await transaction.get(lockRef);
     if (snapshot.exists()) {
-      throw duplicateError("這個身分證字號已經報名過了。");
+      throw duplicateError("這個身分證字號已經有人報名過了。");
     }
 
     transaction.set(lockRef, {
@@ -265,6 +275,17 @@ async function reserveNationalId(nationalIdKey, nationalId) {
     });
     return true;
   });
+}
+
+async function rollbackPartialWrite(nationalIdKey, consentStoragePath) {
+  const tasks = [];
+  if (nationalIdKey) {
+    tasks.push(deleteDoc(doc(db, "registrationLocks", nationalIdKey)).catch(() => {}));
+  }
+  if (consentStoragePath) {
+    tasks.push(deleteObject(ref(storage, consentStoragePath)).catch(() => {}));
+  }
+  await Promise.all(tasks);
 }
 
 function duplicateError(message) {
@@ -289,7 +310,7 @@ function setStatus(message, kind) {
 function getReadableError(error, fallback) {
   const code = String(error?.code || "");
   if (code.includes("permission-denied") || code.includes("unauthorized")) {
-    return "Firebase 權限規則拒絕這次操作，請檢查 Firestore 或 Storage 規則。";
+    return "Firebase 權限不足，請確認 Firestore 或 Storage 規則。";
   }
   return error?.message || fallback;
 }
