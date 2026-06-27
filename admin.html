@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>管理平台｜2026第五屆青年領袖營</title>
+    <title>管理平台登入｜2026第五屆青年領袖營</title>
     <meta name="robots" content="noindex, nofollow" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -21,8 +21,8 @@
     <main class="admin-main">
       <section class="section-heading">
         <p class="eyebrow">Admin</p>
-        <h1>管理平台</h1>
-        <p>登入後可查看報名名單、搜尋、篩選與下載 CSV。</p>
+        <h1>管理平台登入</h1>
+        <p>請先登入管理員帳號，系統會在成功後帶你進入獨立的管理頁面。</p>
       </section>
 
       <form id="adminLoginForm" class="admin-login">
@@ -37,51 +37,8 @@
         <button class="button primary" type="submit">登入管理平台</button>
         <p id="loginStatus" class="form-status" role="status" aria-live="polite"></p>
       </form>
-
-      <section id="adminPanel" hidden>
-        <div class="admin-toolbar">
-          <span class="admin-user">目前登入：<strong id="adminEmail"></strong></span>
-          <input id="searchInput" class="admin-search" type="search" placeholder="搜尋姓名、Email、電話、教會、身分證字號或營別" />
-          <select id="transportFilter" class="admin-filter">
-            <option value="">全部接送需求</option>
-            <option value="需接送">需接送</option>
-            <option value="自行前往">自行前往</option>
-          </select>
-          <button id="downloadCsvButton" class="button primary" type="button">下載 CSV</button>
-          <button id="refreshButton" class="button secondary" type="button">重新整理</button>
-          <button id="logoutButton" class="button secondary" type="button">登出</button>
-        </div>
-
-        <p id="adminSummary" class="admin-summary"></p>
-
-        <section class="table-wrap" aria-live="polite">
-          <table>
-            <thead>
-              <tr>
-                <th>時間</th>
-                <th>姓名</th>
-                <th>營別</th>
-                <th>性別</th>
-                <th>電話</th>
-                <th>Email</th>
-                <th>教會</th>
-                <th>衣服尺寸</th>
-                <th>接送</th>
-                <th>未滿18</th>
-                <th>飲食</th>
-                <th>家長同意書</th>
-              </tr>
-            </thead>
-            <tbody id="registrationRows">
-              <tr>
-                <td colspan="12">載入中...</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </section>
     </main>
 
-    <script type="module" src="./admin.js"></script>
+    <script type="module" src="./admin-login.js"></script>
   </body>
 </html>

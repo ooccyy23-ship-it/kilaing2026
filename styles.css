@@ -511,6 +511,159 @@ footer {
   font-weight: 700;
 }
 
+.table-wrap {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  overflow-x: auto;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  color: var(--deep-sea);
+  background: #eef8f9;
+}
+
+td a {
+  color: var(--ocean);
+  font-weight: 800;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-inline-button {
+  min-height: 40px;
+  padding: 8px 12px;
+  font-size: 0.92rem;
+}
+
+.button.danger {
+  color: #ffffff;
+  background: linear-gradient(135deg, #d9534f, #b63a37);
+  box-shadow: 0 12px 26px rgba(182, 58, 55, 0.18);
+}
+
+.edit-dialog {
+  width: min(920px, calc(100vw - 24px));
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.edit-dialog::backdrop {
+  background: rgba(15, 31, 42, 0.35);
+}
+
+.edit-form {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  background: var(--white);
+}
+
+.edit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-warning {
+  width: 100%;
+  margin: 0;
+}
+
+.admin-main {
+  min-height: 80vh;
+}
+
+.admin-toolbar {
+  width: min(1180px, 100%);
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-search,
+.admin-filter {
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #bfdade;
+  border-radius: 8px;
+  background: #fbfefe;
+  font: inherit;
+}
+
+.admin-login {
+  width: min(460px, 100%);
+  margin: 0 auto 32px;
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 34px);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.admin-login label {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-user {
+  color: var(--muted);
+  margin-right: auto;
+}
+
+.admin-summary {
+  width: min(1180px, 100%);
+  margin: 0 auto 14px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .admin-warning {
   width: min(1180px, 100%);
   margin: 0 auto 18px;
@@ -586,6 +739,25 @@ td a {
   .registration-section,
   .field.two {
     grid-template-columns: 1fr;
+  }
+
+  .admin-toolbar,
+  .dialog-actions {
+    align-items: stretch;
+  }
+
+  .admin-search,
+  .admin-filter,
+  .admin-toolbar .button {
+    width: 100%;
+  }
+
+  .edit-form {
+    padding: 20px 16px;
+  }
+
+  .admin-actions {
+    gap: 6px;
   }
 
   .form-intro {

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>管理平台｜2026第五屆青年領袖營</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="admin-page">
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">Y</span>
+        <span>青年領袖營</span>
+      </a>
+      <nav aria-label="管理導覽">
+        <a href="./index.html">返回首頁</a>
+      </nav>
+    </header>
+
+    <main class="admin-main">
+      <section class="section-heading">
+        <p class="eyebrow">Admin</p>
+        <h1>管理平台</h1>
+        <p>可在這裡搜尋、篩選、下載、修改與刪除報名資料。</p>
+      </section>
+
+      <section id="adminPanel">
+        <div class="admin-toolbar">
+          <span class="admin-user">目前登入：<strong id="adminEmail"></strong></span>
+          <input id="searchInput" class="admin-search" type="search" placeholder="搜尋姓名、Email、電話、教會、身分證字號或營別" />
+          <select id="transportFilter" class="admin-filter">
+            <option value="">全部接送需求</option>
+            <option value="需接送">需接送</option>
+            <option value="自行前往">自行前往</option>
+          </select>
+          <button id="downloadCsvButton" class="button primary" type="button">下載 CSV</button>
+          <button id="refreshButton" class="button secondary" type="button">重新整理</button>
+          <button id="logoutButton" class="button secondary" type="button">登出</button>
+        </div>
+
+        <p id="adminSummary" class="admin-summary"></p>
+
+        <section class="table-wrap" aria-live="polite">
+          <table>
+            <thead>
+              <tr>
+                <th>時間</th>
+                <th>姓名</th>
+                <th>營別</th>
+                <th>性別</th>
+                <th>電話</th>
+                <th>Email</th>
+                <th>教會</th>
+                <th>衣服尺寸</th>
+                <th>接送</th>
+                <th>未滿18</th>
+                <th>飲食</th>
+                <th>家長同意書</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="registrationRows">
+              <tr>
+                <td colspan="13">載入中...</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="editDialog" class="edit-dialog">
+      <form id="editForm" class="edit-form" method="dialog">
+        <div class="edit-header">
+          <h2>編輯報名資料</h2>
+          <button type="button" class="icon-button" id="closeEditDialogButton" aria-label="關閉">×</button>
+        </div>
+
+        <input type="hidden" name="firebaseId" />
+
+        <div id="under18Notice" class="admin-warning" hidden>
+          這筆資料顯示為未滿 18 歲，請確認家長同意書是否也需要更新。
+        </div>
+
+        <div class="field two">
+          <label>
+            <span>姓名</span>
+            <input name="name" required />
+          </label>
+          <label>
+            <span>營別</span>
+            <select name="campType" required>
+              <option value="青年領袖營">青年領袖營</option>
+              <option value="暑期兒童營">暑期兒童營</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="field two">
+          <label>
+            <span>性別</span>
+            <select name="gender" required>
+              <option value="男">男</option>
+              <option value="女">女</option>
+              <option value="其他">其他</option>
+            </select>
+          </label>
+          <label>
+            <span>電話</span>
+            <input name="phone" type="tel" inputmode="numeric" pattern="^09[0-9]{8}$" required />
+          </label>
+        </div>
+
+        <div class="field two">
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" required />
+          </label>
+          <label>
+            <span>接送需求</span>
+            <select name="transport" required>
+              <option value="需接送">需接送</option>
+              <option value="自行前往">自行前往</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="field two">
+          <label>
+            <span>生日</span>
+            <input name="birthday" type="date" required />
+          </label>
+          <label>
+            <span>身分證字號</span>
+            <input name="nationalId" maxlength="10" pattern="^[A-Z][12][0-9]{8}$" required />
+          </label>
+        </div>
+
+        <div class="field two">
+          <label>
+            <span>飲食</span>
+            <select name="diet" id="editDietSelect" required>
+              <option value="葷食">葷食</option>
+              <option value="素食">素食</option>
+              <option value="其他">其他</option>
+            </select>
+          </label>
+          <label id="editDietOtherWrap">
+            <span>飲食說明</span>
+            <input name="dietOther" placeholder="請說明特殊飲食需求" />
+          </label>
+        </div>
+
+        <div class="field two">
+          <label>
+            <span>衣服尺寸</span>
+            <select name="shirtSize" required>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="2XL">2XL</option>
+              <option value="3XL">3XL</option>
+            </select>
+          </label>
+          <label>
+            <span>教會名稱</span>
+            <input name="church" required />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>地址</span>
+          <input name="address" required />
+        </label>
+
+        <label class="field">
+          <span>家長同意書檔名</span>
+          <input name="consentOriginalName" placeholder="沒有可留白" />
+        </label>
+
+        <div class="dialog-actions">
+          <button type="button" class="button secondary" id="cancelEditButton">取消</button>
+          <button type="submit" class="button primary">儲存修改</button>
+        </div>
+        <p id="editStatus" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </dialog>
+
+    <script type="module" src="./dashboard.js"></script>
+  </body>
+</html>
